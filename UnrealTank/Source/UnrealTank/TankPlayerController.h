@@ -14,8 +14,11 @@ UCLASS()
 class UNREALTANK_API ATankPlayerController : public APlayerController
 {
 	GENERATED_BODY()
-	
-    ATank* GetControlledTank() const;
+	public:
+		ATank* GetControlledTank() const;
+		
+		void BeginPlay() override;
+
 	
 	
 	

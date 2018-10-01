@@ -2,6 +2,7 @@
 
 #pragma once
 
+#include "TankAimingComponent.h"
 #include "CoreMinimal.h"
 #include "GameFramework/Pawn.h"
 #include "Tank.generated.h"
@@ -18,6 +19,8 @@ public:
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
+	// Aiming Objects
+	UTankAimingComponent *TankAimingComponent = nullptr;
 
 public:	
 	// Called every frame
@@ -26,6 +29,13 @@ public:
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
+	void AimAt(FVector Hitlocation);
+	//Callabale as function in BluePrint
+	UFUNCTION(BlueprintCallable, Category = Setup)
+		void SetBarrelReference(UStaticMeshComponent *BarrelToSet);
+	//Callable Variable in BluePrint
+	UPROPERTY(EditAnywhere, Category = Firing)
+		float LaunchSpeed = 100000;
 	
 	
 };

@@ -2,11 +2,15 @@
 
 #pragma once
 
-#include "TankAimingComponent.h"
+
 #include "CoreMinimal.h"
 #include "GameFramework/Pawn.h"
 #include "Tank.generated.h"
 
+//Forward Declaration
+class UTankAimingComponent;
+class UTankBarrel;
+class UTurretTank;
 
 UCLASS()
 class UNREALTANK_API ATank : public APawn
@@ -34,6 +38,10 @@ public:
 	//Callabale as function in BluePrint
 	UFUNCTION(BlueprintCallable, Category = Setup)
 		void SetBarrelReference(UTankBarrel *BarrelToSet);
+
+	//Callable as function in BluePrint
+	UFUNCTION(BlueprintCallable, Category = Setup)
+		void SetTurretReference(UTurretTank *TurretToSet);
 	//Callable Variable in BluePrint
 	UPROPERTY(EditAnywhere, Category = Firing)
 		float LaunchSpeed = 100000;

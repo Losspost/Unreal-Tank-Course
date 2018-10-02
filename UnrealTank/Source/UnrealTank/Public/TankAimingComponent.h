@@ -8,7 +8,10 @@
 #include "Components/StaticMeshComponent.h"
 #include "TankAimingComponent.generated.h"
 
+
+
 class UTankBarrel; //Forward Declaration
+class UTurretTank;
 
 UCLASS( ClassGroup=(Custom), meta=(BlueprintSpawnableComponent) )
 class UNREALTANK_API UTankAimingComponent : public UActorComponent
@@ -28,9 +31,12 @@ public:
 	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
 
 	void AimAt(FVector WoldSpaceAim,float LaunchSpeed);
-	
+	//Set The Reference in the BluePrints
 	void SetBarrelReference(UTankBarrel *BarrelToSet);
+	//Set The Reference for the Turret
+	void setTurretReference(UTurretTank *TurretToSet);
 private:
 	UTankBarrel *Barrel = nullptr;
+	UTurretTank *Turret = nullptr;
 	void MoveBarrelTowards(FVector AimDirection);
 };
